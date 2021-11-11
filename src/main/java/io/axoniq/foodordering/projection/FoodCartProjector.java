@@ -1,9 +1,9 @@
-package io.axoniq.foodordering.query;
+package io.axoniq.foodordering.projection;
 
-import io.axoniq.foodordering.coreapi.FindFoodCartQuery;
-import io.axoniq.foodordering.coreapi.FoodCartCreatedEvent;
-import io.axoniq.foodordering.coreapi.ProductDeselectedEvent;
-import io.axoniq.foodordering.coreapi.ProductSelectedEvent;
+import io.axoniq.foodordering.queries.FindFoodCartQuery;
+import io.axoniq.foodordering.events.FoodCartCreatedEvent;
+import io.axoniq.foodordering.events.ProductDeselectedEvent;
+import io.axoniq.foodordering.events.ProductSelectedEvent;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ class FoodCartProjector {
 
     @EventHandler
     public void on(FoodCartCreatedEvent event) {
-        FoodCartView foodCartView = new FoodCartView(event.getFoodCartId(), Collections.emptyMap());
+        FoodCartView foodCartView = new FoodCartView(event.getFoodCardId(), Collections.emptyMap());
         foodCartViewRepository.save(foodCartView);
     }
 
@@ -41,6 +41,6 @@ class FoodCartProjector {
 
     @QueryHandler
     public FoodCartView handle(FindFoodCartQuery query) {
-        return foodCartViewRepository.findById(query.getFoodCartId()).orElse(null);
+        return foodCartViewRepository.findById(query.getFoodCardId()).orElse(null);
     }
 }

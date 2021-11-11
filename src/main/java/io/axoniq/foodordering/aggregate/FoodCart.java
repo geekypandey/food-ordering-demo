@@ -1,4 +1,4 @@
-package io.axoniq.foodordering.command;
+package io.axoniq.foodordering.aggregate;
 
 import io.axoniq.foodordering.commands.ConfirmOrderCommand;
 import io.axoniq.foodordering.commands.CreateFoodCartCommand;
@@ -6,7 +6,7 @@ import io.axoniq.foodordering.commands.DeselectProductCommand;
 import io.axoniq.foodordering.events.FoodCartCreatedEvent;
 import io.axoniq.foodordering.events.OrderConfirmedEvent;
 import io.axoniq.foodordering.events.ProductDeselectedEvent;
-import io.axoniq.foodordering.coreapi.ProductDeselectionException;
+import io.axoniq.foodordering.exceptions.ProductDeselectionException;
 import io.axoniq.foodordering.events.ProductSelectedEvent;
 import io.axoniq.foodordering.commands.SelectProductCommand;
 import org.axonframework.commandhandling.CommandHandler;
