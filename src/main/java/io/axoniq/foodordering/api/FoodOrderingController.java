@@ -1,4 +1,4 @@
-package io.axoniq.foodordering.gui;
+package io.axoniq.foodordering.api;
 
 import io.axoniq.foodordering.commands.CreateFoodCartCommand;
 import io.axoniq.foodordering.commands.DeselectProductCommand;
