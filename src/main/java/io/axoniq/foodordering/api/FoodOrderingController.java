@@ -1,5 +1,6 @@
 package io.axoniq.foodordering.api;
 
+import com.google.gson.JsonObject;
 import io.axoniq.foodordering.commands.CreateFoodCartCommand;
 import io.axoniq.foodordering.commands.DeselectProductCommand;
 import io.axoniq.foodordering.queries.FindFoodCartQuery;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -58,5 +61,14 @@ class FoodOrderingController {
                 new FindFoodCartQuery(UUID.fromString(foodCartId)),
                 ResponseTypes.instanceOf(FoodCartView.class)
         );
+    }
+
+    @GetMapping("/products")
+    public List<UUID> getProducts() {
+        List<UUID> products = new ArrayList<>();
+        for(int i = 0; i < 5; i++) {
+            products.add(UUID.randomUUID());
+        }
+        return products;
     }
 }
